@@ -2,6 +2,7 @@ require('dotenv').config();
 
 let uri = process.env.MONGO_URI
 let mongoose = require('mongoose')
+
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
