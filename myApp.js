@@ -5,22 +5,30 @@ let mongoose = require('mongoose')
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-var Schema = mongoose.Schema;
 
-//define
-let personSchema = new Schema({
-    name: { type: String, required: true },
+
+/** 2) Create a 'Person' Model */
+var personSchema = new mongoose.Schema({
+    name: String,
     age: Number,
     favoriteFoods: [String]
 });
 
-//compile
-const Person = mongoose.model('Person', personSchema);
+/** 3) Create and Save a Person */
+var Person = mongoose.model('Person', personSchema);
 
-//create
-const axl = new Person({
-    name: { first: 'Axl', last: 'Rose' }
-});
+var createAndSavePerson = function(done) {
+    var janeFonda = new Person({ name: "Jane Fonda", age: 84, favoriteFoods: ["eggs", "fish", "fresh fruit"] });
+
+    janeFonda.save(function(err, data) {
+        if (err) return console.error(err);
+        done(null, data)
+    });
+};
+
+
+
+
 
 const createAndSavePerson = (done) => {
     done(null /*, data*/ );
