@@ -5,8 +5,21 @@ let mongoose = require('mongoose')
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+//compile
+const Person = mongoose.model('Person', personSchema);
 
-let Person;
+//define
+let personSchema = new Schema({
+    name: { type: String, required: true },
+    age: Number,
+    favoriteFoods: [String]
+});
+
+
+//create
+const axl = new Person({
+    name: { first: 'Axl', last: 'Rose' }
+});
 
 const createAndSavePerson = (done) => {
     done(null /*, data*/ );
