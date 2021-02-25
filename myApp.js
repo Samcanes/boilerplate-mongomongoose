@@ -5,8 +5,7 @@ let mongoose = require('mongoose')
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-//compile
-const Person = mongoose.model('Person', personSchema);
+var Schema = mongoose.Schema;
 
 //define
 let personSchema = new Schema({
@@ -15,6 +14,8 @@ let personSchema = new Schema({
     favoriteFoods: [String]
 });
 
+//compile
+const Person = mongoose.model('Person', personSchema);
 
 //create
 const axl = new Person({
