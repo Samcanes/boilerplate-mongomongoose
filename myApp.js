@@ -1,11 +1,9 @@
 require('dotenv').config();
 
-let uri = process.env.MONGO_URI
-let mongoose = require('mongoose')
+/** 1) Install & Set up mongoose */
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URI);
 
 /** 2) Create a 'Person' Model */
 var personSchema = new mongoose.Schema({
